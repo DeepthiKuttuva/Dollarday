@@ -1,9 +1,14 @@
 
 package com.dollardays.pages;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -187,18 +192,31 @@ public class MyProfile {
 	public WebElement getExt() {
 		return Ext;
 	}
-
+	public  static void captureScreenShot(WebDriver ldriver, String FileName, String folder) throws IOException{
+		// Take screenshot and store as a file format             
+		 File src=((TakesScreenshot)ldriver).getScreenshotAs(OutputType.FILE);  
+ 		try {
+		// now copy the  screenshot to desired location using copyFile method		 
+		FileUtils.copyFile(src, new File("C:\\Users\\venka\\automation\\DollarDays\\Screenshot\\"+folder+"\\"+FileName+".png"));                              }
+		catch (IOException e)		 
+		{
+		  System.out.println(e.getMessage()); 
+		}
+		  }
 	public void myProfile(String username, String password, String CurrentPassword, String NewPassword,
 			String RepeatedPassword, String Firstname, String Lastname, String Ext, String SecondaryNumber)
 			throws InterruptedException {
 		Thread.sleep(1000);
 		getSignIn().click();
+		Thread.sleep(1000);
 		getDropdownsignIn().click();
 		Thread.sleep(1000);
 		getUsername().sendKeys(username);
 		getPassword().sendKeys(password);
 		getSignInBtn().click();
+		Thread.sleep(5000);
 		getDropdown().click();
+		Thread.sleep(1000);
 		getAccounts().click();
 		Thread.sleep(1000);
 		getEdit().click();
@@ -221,40 +239,8 @@ public class MyProfile {
 		getNews().click();
 		getNewsSave().click();
 	}
-
-	public void myProfile1(String username, String password, String CurrentPassword, String NewPassword,
-			String RepeatedPassword, String Firstname, String Lastname, String Ext, String SecondaryNumber)
-			throws InterruptedException {
-		Thread.sleep(1000);
-		getSignIn().click();
-		getDropdownsignIn().click();
-		Thread.sleep(1000);
-		getUsername().sendKeys(username);
-		getPassword().sendKeys(password);
-		getSignInBtn().click();
-		Thread.sleep(1000);
-		getDropdown1().click();
-		getAccounts().click();
-		Thread.sleep(1000);
-		getEdit().click();
-		getCurrentPassword().sendKeys(CurrentPassword);
-		getNewPassword().sendKeys(NewPassword);
-		getRepeatedPassword().sendKeys(RepeatedPassword);
-		getSaveChanges().click();
-		Thread.sleep(1000);
-		getFirstname().clear();
-		getFirstname().sendKeys(Firstname);
-		getLastname().clear();
-		getLastname().sendKeys(Lastname);
-		getExt().clear();
-		getExt().sendKeys("" + (Double.valueOf(Ext)).intValue());
-		getSecondaryNumber().clear();
-		getSecondaryNumber().sendKeys("" + (Double.valueOf(SecondaryNumber)).intValue());
-		getPersonalSave().click();
-		driver.switchTo().alert().accept();
-		Thread.sleep(1000);
-		getNews().click();
-		getNewsSave().click();
-	}
-
+  
+  
+ 
+	
 }

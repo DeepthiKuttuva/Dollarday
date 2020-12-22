@@ -1,7 +1,13 @@
 package com.dollardays.pages;
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -71,6 +77,17 @@ public class CreatePage {
 	public WebElement getRegister() {
 		return Register;
 	}
+	public static void captureScreenShot(WebDriver ldriver, String FileName, String folder) throws IOException{
+		// Take screenshot and store as a file format             
+		 File src=((TakesScreenshot)ldriver).getScreenshotAs(OutputType.FILE);  
+ 		try {
+		// now copy the  screenshot to desired location using copyFile method		 
+		FileUtils.copyFile(src, new File("C:\\Users\\venka\\automation\\DollarDays\\Screenshot\\"+folder+"\\"+FileName+".png"));                              }
+		catch (IOException e)		 
+		{
+		  System.out.println(e.getMessage()); 
+		}
+		  }
 	public void create(String FirstName, String LastName, String Email, String Phone, String Password, String ConfirmPassword) throws InterruptedException {
 		Thread.sleep(1000);
 		
@@ -84,6 +101,9 @@ public class CreatePage {
 		getPhone().sendKeys(Phone);
 		getPassword().sendKeys(Password);
 		getConfirmPassword().sendKeys(ConfirmPassword);
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,2000)");
+		Thread.sleep(1000);
 		Thread.sleep(1000);
 		getRegister().click();
 	}

@@ -1,8 +1,13 @@
 package com.dollardays.pages;
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -142,10 +147,16 @@ public class AddressBook {
     public WebElement getSaveChanges() {
     	return SaveChanges;
     }
+    @FindBy(xpath="//*[@id='ctl00_cphContent_btnAddAddress']")
+    private WebElement Screenshot;
+    public WebElement getScreenshot() {
+    	return Screenshot;
+    }
     public void MyAddressBook(String username, String password, String Lastnameedit, String Company, String Address, String Address2, String City, String State, String Ext, String Zip) throws InterruptedException {
     	Thread.sleep(1000);
 		getSignIn().click();
 		getDropdownsignIn().click();
+		Thread.sleep(1000);
 		getUsername().sendKeys(username);
 		getPassword().sendKeys(password);
 		getSignInBtn().click();
@@ -186,12 +197,29 @@ public class AddressBook {
 		//elem.click();
         js.executeScript("arguments[0].click();", elem);
 
-		getSaveChanges().click();
 		
+    }
 		
 		//Select state = new state(driver.findElement(By.id("ctl00_cphContent_ddlshipstate")));
 		//state.selectByVisibleText("California");
-}
+	public void save() {
+		
+		//Thread.sleep(1000);
+
+		getSaveChanges().click();
+	}
+    public static void captureScreenShot(WebDriver ldriver, String FileName, String folder) throws IOException{
+		// Take screenshot and store as a file format             
+		 File src=((TakesScreenshot)ldriver).getScreenshotAs(OutputType.FILE);  
+ 		try {
+		// now copy the  screenshot to desired location using copyFile method		 
+		FileUtils.copyFile(src, new File("C:\\Users\\venka\\automation\\DollarDays\\Screenshot\\"+folder+"\\"+FileName+".png"));                              }
+		catch (IOException e)		 
+		{
+		  System.out.println(e.getMessage()); 
+		}
+		  }
+
 	
 
 }

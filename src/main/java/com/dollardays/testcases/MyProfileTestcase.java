@@ -5,6 +5,7 @@ import java.security.GeneralSecurityException;
 import java.util.Hashtable;
 import java.util.Map;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
@@ -34,8 +35,14 @@ public class MyProfileTestcase  extends BaseTest{
 		MyProfile MyProfilePage = new MyProfile(driver);
 		//accountoverviewPage.signIn(datatable.get("UserName"), Base64.decrypt(datatable.get("Password")));
 		MyProfilePage.myProfile(datatable.get("UserName"), Base64.decrypt(datatable.get("Password")), Base64.decrypt(datatable.get("CurrentPassword")), Base64.decrypt(datatable.get("NewPassword")), Base64.decrypt(datatable.get("RepeatedPassword")), datatable.get("Firstname"), datatable.get("Lastname"), datatable.get("Ext"), datatable.get("SecondaryNumber"));
-		//String title ="www.dollardays.com says";
-		//accountoverviewPage.getHandleToWindow(driver driver, String title);
+		
+		//MyProfilePage.captureScreenShot(driver,"MyProfile"," MyProfile_Input_TC1_Screenshots");
+		driver.manage().window().maximize();
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0,0)");
+		//MyProfilePage.save();
+		//MyProfilePage.NewsSave();
+		MyProfilePage.captureScreenShot(driver,"MyProfile"," MyProfile_Results_TC1_Screenshots");
 		VideoRecorder_utlity.stopRecord();//End point of video recording
 	}
 	
@@ -51,8 +58,12 @@ public class MyProfileTestcase  extends BaseTest{
 		MyProfile MyProfilePage = new MyProfile(driver);
 		//accountoverviewPage.signIn(datatable.get("UserName"), Base64.decrypt(datatable.get("Password")));
 		MyProfilePage.myProfile(datatable.get("UserName"), Base64.decrypt(datatable.get("Password")), Base64.decrypt(datatable.get("CurrentPassword")), Base64.decrypt(datatable.get("NewPassword")), Base64.decrypt(datatable.get("RepeatedPassword")), datatable.get("Firstname"), datatable.get("Lastname"), datatable.get("Ext"), datatable.get("SecondaryNumber"));
-		//String title ="www.dollardays.com says";
-		//accountoverviewPage.getHandleToWindow(driver driver, String title);
+		
+		driver.manage().window().maximize();
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0,0)");
+		MyProfilePage.captureScreenShot(driver,"MyProfile"," MyProfile_Results_TC2_Screenshots");
+		
 		VideoRecorder_utlity.stopRecord();//End point of video recording
 	}
 	
@@ -68,8 +79,12 @@ public class MyProfileTestcase  extends BaseTest{
 		MyProfile MyProfilePage = new MyProfile(driver);
 		//accountoverviewPage.signIn(datatable.get("UserName"), Base64.decrypt(datatable.get("Password")));
 		MyProfilePage.myProfile(datatable.get("UserName"), Base64.decrypt(datatable.get("Password")), Base64.decrypt(datatable.get("CurrentPassword")), Base64.decrypt(datatable.get("NewPassword")), Base64.decrypt(datatable.get("RepeatedPassword")), datatable.get("Firstname"),datatable.get("Lastname"), datatable.get("Ext"), datatable.get("SecondaryNumber"));
-		//String title ="www.dollardays.com says";
-		//accountoverviewPage.getHandleToWindow(driver driver, String title);
+		driver.manage().window().maximize();
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0,0)");
+		
+		MyProfilePage.captureScreenShot(driver,"MyProfile"," MyProfile_Results_TC3_Screenshots");
+		
 		VideoRecorder_utlity.stopRecord();//End point of video recording
 	}
 
@@ -84,9 +99,14 @@ public class MyProfileTestcase  extends BaseTest{
 		Thread.sleep(1000);
 		MyProfile MyProfilePage = new MyProfile(driver);
 		//accountoverviewPage.signIn(datatable.get("UserName"), Base64.decrypt(datatable.get("Password")));
-		MyProfilePage.myProfile1(datatable.get("UserName"), Base64.decrypt(datatable.get("Password")), Base64.decrypt(datatable.get("CurrentPassword")), Base64.decrypt(datatable.get("NewPassword")), Base64.decrypt(datatable.get("RepeatedPassword")),datatable.get("Firstname"), datatable.get("Lastname"), datatable.get("Ext"), datatable.get("SecondaryNumber"));
-		//String title ="www.dollardays.com says";
-		//accountoverviewPage.getHandleToWindow(driver driver, String title);
+		MyProfilePage.myProfile(datatable.get("UserName"), Base64.decrypt(datatable.get("Password")), Base64.decrypt(datatable.get("CurrentPassword")), Base64.decrypt(datatable.get("NewPassword")), Base64.decrypt(datatable.get("RepeatedPassword")),datatable.get("Firstname"), datatable.get("Lastname"), datatable.get("Ext"), datatable.get("SecondaryNumber"));
+		
+		driver.manage().window().maximize();
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0,0)");
+		
+		MyProfilePage.captureScreenShot(driver,"MyProfile"," MyProfile_Results_TC4_Screenshots");
+		
 		VideoRecorder_utlity.stopRecord();//End point of video recording
 	}
 

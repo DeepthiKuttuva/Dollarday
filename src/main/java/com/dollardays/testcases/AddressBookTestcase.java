@@ -5,6 +5,7 @@ import java.security.GeneralSecurityException;
 import java.util.Hashtable;
 import java.util.Map;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
@@ -18,6 +19,8 @@ import com.dollardays.utilities.DDDataProvider;
 import com.dollardays.utilities.JsonReader;
 import com.dollardays.utilities.TestUtil;
 import com.dollardays.utilities.VideoRecorder_utlity;
+
+
 import com.dollardays.commons.*;
 public class AddressBookTestcase extends BaseTest{
 
@@ -33,7 +36,15 @@ public class AddressBookTestcase extends BaseTest{
 		AddressBook addressBook=new AddressBook(driver);
 		//accountoverviewPage.signIn(datatable.get("UserName"), Base64.decrypt(datatable.get("Password")));
 		addressBook.MyAddressBook(datatable.get("UserName"), Base64.decrypt(datatable.get("Password")), datatable.get("Lastnameedit"), datatable.get("Company"),datatable.get("Address"),datatable.get("Address2") , datatable.get("City"), datatable.get("State"),datatable.get("Ext"),datatable.get("Zip"));
+		//capture screenshot 
+		driver.manage().window().maximize();
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0,0)");
+        //driver.manage().window().maximize();
+		addressBook.captureScreenShot(driver,"AddressBook","AddressBook_Input_TC1_Screenshots");
 		
+		addressBook.save();
+		addressBook.captureScreenShot(driver,"AddressBook","AddressBook_Result_TC1_Screenshots");
 		// sending State from excel sheet.
 //				if ((datatable.get("State") != null && !(datatable.get("State").equals("")))) {
 //					AddressBook.getdropdown().sendKeys((datatable.get("State")));

@@ -1,8 +1,13 @@
 package com.dollardays.pages;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,9 +17,9 @@ import org.testng.Assert;
 import com.dollardays.commons.Base64;
 
 public class SignInPage {
-
+    
 	WebDriver driver;
-
+	//SignInPage signInpage = new SignInPage(driver);
 	public SignInPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -112,43 +117,46 @@ public class SignInPage {
 	public WebElement getSignOut() {
 		return signOut;
 	}
+	public static void captureScreenShot(WebDriver ldriver, String FileName, String folder) throws IOException{
+		// Take screenshot and store as a file format             
+		 File src=((TakesScreenshot)ldriver).getScreenshotAs(OutputType.FILE);  
+ 		try {
+		// now copy the  screenshot to desired location using copyFile method		 
+		FileUtils.copyFile(src, new File("C:\\Users\\venka\\automation\\DollarDays\\Screenshot\\"+folder+"\\"+FileName+".png"));                              }
+		catch (IOException e)		 
+		{
+		  System.out.println(e.getMessage()); 
+		}
+		  }
+	
 	
 	public void signIn(String username, String password) throws InterruptedException {
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		getSignIn().click();
 		Thread.sleep(1000);
 		getDropdownsignIn().click();
 		getUsername().sendKeys(username);
 		getPassword().sendKeys(password);
+		
 		getSignInBtn().click();
 		
 	}
 	public void signIn1(String Username1, String Password1) throws InterruptedException {
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		getSignIn().click();
 		getDropdownsignIn().click();
+		Thread.sleep(1000);
 		getUsername().sendKeys(Username1);
 		getPassword().sendKeys(Password1);
 		getpasswordEye().click();
 		getCheckBox().click();
+		
 		getSignInBtn().click();
 	}
 
-	//public void signIn2(String Username1, String Password1) throws InterruptedException {
-		//Thread.sleep(1000);
-		//getSignIn().click();
-		//getDropdownsignIn().click();
-		//getUsername().sendKeys(Username1);
-		//getPassword().sendKeys(Password1);
-		//getpasswordEye().click();
-		//getCheckBox().click();
-		//getForgotEmail().click();
-		
-		
-		//getSignInBtn().click();
-	//}
-	public void signIn3(String Username1, String Password1) throws InterruptedException {
-		Thread.sleep(5000);
+	
+	public void signIn3(String Username1, String Password1) throws InterruptedException  {
+		Thread.sleep(1000);
 		getSignIn().click();
 		getDropdownsignIn().click();
 		getUsername().sendKeys(Username1);
@@ -159,9 +167,10 @@ public class SignInPage {
 		getForgotEmail().click();
 		getEmailAddress().sendKeys(Username1);
 	    getLookUp().click();
+	    
 		//getSignInBtn().click();
 	}
-	public void ForgetEmailsignIn(String Username1, String Password1) throws InterruptedException {
+	public void ForgetEmailsignIn(String Username1, String Password1) throws InterruptedException  {
 		Thread.sleep(5000);
 		getSignIn().click();
 		getDropdownsignIn().click();
@@ -171,15 +180,18 @@ public class SignInPage {
 		getCheckBox().click();
 		getForgotEmail().click();
 		getEmailAddress().sendKeys();
+		
 	    getLookUp().click();
+	    
 	    //driver.switchTo().alert().dismiss();
 	    //driver.switchTo().alert().accept();
 	    getEmailAddress().sendKeys("addsdefdgcg@e.com");
+	    
 	    getLookUp().click();
 		//getSignInBtn().click();
 	}
-	public void signIn4(String username, String password) throws InterruptedException {
-		Thread.sleep(5000);
+	public void signIn4(String username, String password) throws InterruptedException  {
+		Thread.sleep(1000);
 		getSignIn().click();
 		getDropdownsignIn().click();
 		getUsername().sendKeys(username);
@@ -190,6 +202,7 @@ public class SignInPage {
 		String actualTitle = driver.getTitle();
 		Assert.assertEquals(actualTitle, expectedTitle, " Successfully Logged into the HomePage");
 		getSignOut().click();
+		
 		getLogoutBtn().click();
 	}
 	

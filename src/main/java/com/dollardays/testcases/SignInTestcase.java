@@ -26,6 +26,7 @@ public class SignInTestcase extends BaseTest{
 		Thread.sleep(1000);
 		SignInPage signinPage = new SignInPage(driver);
 		signinPage.signIn(datatable.get("UserName"), Base64.decrypt(datatable.get("Password")));
+		signinPage.captureScreenShot(driver,"SignIn"," SignIn_TC1_Screenshots");
 		VideoRecorder_utlity.stopRecord();//End point of video recording
 	}
 	@DDDataProvider(datafile = "testdata/testdata3.xlsx", sheetName = "Sheet1",  testcaseID = "TC2", runmode = "Yes")
@@ -36,6 +37,7 @@ public class SignInTestcase extends BaseTest{
 		Thread.sleep(1000);
 		SignInPage signinPage = new SignInPage(driver);
 		signinPage.signIn(datatable.get("UserName"), Base64.decrypt(datatable.get("Password")));
+		signinPage.captureScreenShot(driver,"SignIn"," SignIn_TC2_Screenshots");
 		VideoRecorder_utlity.stopRecord();//End point of video recording
 	}
 	
@@ -47,6 +49,7 @@ public class SignInTestcase extends BaseTest{
 		Thread.sleep(1000);
 		SignInPage signinPage = new SignInPage(driver);
 		signinPage.signIn(datatable.get("UserName"), Base64.decrypt(datatable.get("Password")));
+		signinPage.captureScreenShot(driver,"SignIn"," SignIn_TC3_Screenshots");
 		VideoRecorder_utlity.stopRecord();//End point of video recording
 	}
 	
@@ -58,6 +61,7 @@ public class SignInTestcase extends BaseTest{
 		Thread.sleep(1000);
 		SignInPage signinPage = new SignInPage(driver);
 		signinPage.signIn1(datatable.get("UserName"), Base64.decrypt(datatable.get("Password")));
+		signinPage.captureScreenShot(driver,"SignIn"," SignIn_TC4_Screenshots");
 		VideoRecorder_utlity.stopRecord();//End point of video recording
 	}
 	//@DDDataProvider(datafile = "testdata/testdata3.xlsx", sheetName = "Sheet1",  testcaseID = "TC5", runmode = "Yes")
@@ -78,6 +82,7 @@ public class SignInTestcase extends BaseTest{
 		Thread.sleep(1000);
 		SignInPage signinPage = new SignInPage(driver);
 		signinPage.signIn3(datatable.get("UserName"), Base64.decrypt(datatable.get("Password")));
+		signinPage.captureScreenShot(driver,"AddressBook"," SignIn_TC5_Screenshots");
 		VideoRecorder_utlity.stopRecord();//End point of video recording
 	}
 	@DDDataProvider(datafile = "testdata/testdata3.xlsx", sheetName = "Sheet1",  testcaseID = "TC6", runmode = "Yes")
@@ -88,18 +93,10 @@ public class SignInTestcase extends BaseTest{
 		Thread.sleep(1000);
 		SignInPage signinPage = new SignInPage(driver);
 		signinPage.ForgetEmailsignIn(datatable.get("UserName"), Base64.decrypt(datatable.get("Password")));
+		signinPage.captureScreenShot(driver,"SignIn"," SignIn_TC6_Screenshots");
 		VideoRecorder_utlity.stopRecord();//End point of video recording
 	}
-	//@DDDataProvider(datafile = "testdata/testdata3.xlsx", sheetName = "Sheet1",  testcaseID = "TC7", runmode = "Yes")
-	//@Test(dataProvider = "dd-dataprovider", dataProviderClass = TestUtil.class)
-	//public void invokeForgetEmail(Hashtable<String, String> datatable) throws Exception{
-		//VideoRecorder_utlity.startRecord("GoogleTestRecording");//Starting point of video recording
-		//ExtentTestManager.getTest().log(Status.INFO, "Blank email in Email Address and then Invalid email Address on email Address bar and giving Look up");
-		//Thread.sleep(1000);
-		//SignInPage signinPage = new SignInPage(driver);
-		//signinPage.ForgetEmailsignIn(datatable.get("UserName"), Base64.decrypt(datatable.get("Password")));
-		//VideoRecorder_utlity.stopRecord();//End point of video recording
-//	}
+	
 	@DDDataProvider(datafile = "testdata/testdata3.xlsx", sheetName = "Sheet1",  testcaseID = "TC7", runmode = "Yes")
 	@Test(dataProvider = "dd-dataprovider", dataProviderClass = TestUtil.class)
 	public void invokeSignIn7(Hashtable<String, String> datatable) throws Exception{
@@ -108,6 +105,7 @@ public class SignInTestcase extends BaseTest{
 		Thread.sleep(1000);
 		SignInPage signinPage = new SignInPage(driver);
 		signinPage.signIn4(datatable.get("UserName"), Base64.decrypt(datatable.get("Password")));
+		signinPage.captureScreenShot(driver,"SignIn"," SignIn_TC7_Screenshots");
 		VideoRecorder_utlity.stopRecord();//End point of video recording
 	}
 }
